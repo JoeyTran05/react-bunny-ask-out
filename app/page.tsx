@@ -95,7 +95,7 @@ const Home = () => {
 											🐰
 										</h3>
 										<p className="text-gray-600 mt-2">
-											Cho em chọn lại đó! 🐰
+											Cho em chọn lại đó ={")))"} 🐰
 										</p>
 										<button
 											onClick={() => setShowModal(false)}
