@@ -74,7 +74,7 @@ const Home = () => {
 							</div>
 						</form>
 						<span className="text-center p-6  text-xl text-pink-700">
-							Bấm vô mấy con thỏ là nó di chuyển á ={"))))"}
+							Bấm mấy con thỏ là nó di chuyển á ={"))))"}
 						</span>
 
 						<AnimatePresence>
