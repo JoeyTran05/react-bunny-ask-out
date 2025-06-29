@@ -32,13 +32,13 @@ const Home = () => {
 			) : (
 				<div className="flex flex-col items-center">
 					{/* Bunnies move only in top 40% viewport */}
-					<div className=" w-full h-[40vh] z-0">
+					<div className="w-full h-[40vh] z-0">
 						<TouchBunny animationData={bunny_holding_carrot} />
 						<TouchBunny animationData={bunny_in_hat} />
 					</div>
 
 					{/* Form fixed at bottom */}
-					<div className="flex flex-col w-full p-6 max-w-md mx-auto z-10">
+					<div className="flex flex-col w-full px-6 max-w-md mx-auto z-10">
 						<div className=" w-full flex justify-center">
 							<div className="mb-8 w-40 h-40">
 								<BunnyPlayer animationData={bunny_ears} />
