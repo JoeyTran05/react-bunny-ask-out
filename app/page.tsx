@@ -1,103 +1,117 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+import { useState } from "react";
+import BunnyPlayer from "@/components/BunnyPlayer";
+import bunny_ears from "@/public/bunny_ears.json";
+import bunny_in_hat from "@/public/bunny_in_hat.json";
+import bunny_holding_carrot from "@/public/bunny_holding_carrot.json";
+import bunny_in_present from "@/public/bunny_in_present.json";
+import TouchBunny from "@/components/TouchBunny";
+import confetti from "canvas-confetti";
+import { motion, AnimatePresence } from "framer-motion";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+const Home = () => {
+	const [clicked, setClicked] = useState(false);
+	const [showModal, setShowModal] = useState(false);
+
+	return (
+		<main className="min-h-screen bg-pink-50 relative overflow-hidden">
+			{!clicked ? (
+				<div
+					onClick={() => setClicked(true)}
+					className="flex flex-col items-center justify-center min-h-screen cursor-pointer p-4"
+				>
+					<BunnyPlayer
+						animationData={bunny_in_present}
+						className="w-60 h-60"
+					/>
+					<p className="text-lg text-pink-700 mt-4">
+						Em thỏ bấm vô hộp quà đi ={"))))"} 🎁
+					</p>
+				</div>
+			) : (
+				<div className="flex flex-col items-center">
+					{/* Bunnies move only in top 40% viewport */}
+					<div className=" w-full h-[40vh] z-0">
+						<TouchBunny animationData={bunny_holding_carrot} />
+						<TouchBunny animationData={bunny_in_hat} />
+					</div>
+
+					{/* Form fixed at bottom */}
+					<div className="flex flex-col w-full p-6 max-w-md mx-auto z-10">
+						<div className=" w-full flex justify-center">
+							<div className="mb-8 w-40 h-40">
+								<BunnyPlayer animationData={bunny_ears} />
+							</div>
+						</div>
+
+						<form className="flex flex-col gap-4 w-full bg-white p-6 shadow-lg rounded-t-xl">
+							<h2 className="text-xl font-semibold text-center text-pink-700">
+								Ngày mai em thỏ coi phim với anh téo nha? 🥺
+							</h2>
+
+							<div className="flex gap-4 justify-center">
+								<button
+									type="button"
+									onClick={() => {
+										confetti({
+											particleCount: 150,
+											spread: 100,
+											origin: { y: 0.6 },
+										});
+									}}
+									className="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600"
+								>
+									Yes! ❤️
+								</button>
+								<button
+									type="button"
+									onClick={() => setShowModal(true)}
+									className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300"
+								>
+									No 😢
+								</button>
+							</div>
+						</form>
+						<span className="text-center p-6  text-xl text-pink-700">
+							Bấm vô mấy con thỏ là nó di chuyển á ={"))))"}
+						</span>
+
+						<AnimatePresence>
+							{showModal && (
+								<motion.div
+									initial={{ opacity: 0, y: -20 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: -20 }}
+									transition={{
+										duration: 0.4,
+										ease: "easeOut",
+									}}
+									className="fixed top-10 left-1/2 -translate-x-1/2 z-50"
+								>
+									<div className="bg-white shadow-xl rounded-xl px-6 py-4 border border-pink-200 text-center w-[90vw] max-w-sm">
+										<h3 className="text-lg font-semibold text-pink-700">
+											😢 Kệ em, em vẫn phải coi với anh!
+											🐰
+										</h3>
+										<p className="text-gray-600 mt-2">
+											Cho em chọn lại đó! 🐰
+										</p>
+										<button
+											onClick={() => setShowModal(false)}
+											className="mt-4 px-4 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600"
+										>
+											Close
+										</button>
+									</div>
+								</motion.div>
+							)}
+						</AnimatePresence>
+					</div>
+				</div>
+			)}
+		</main>
+	);
+};
+
+export default Home;
