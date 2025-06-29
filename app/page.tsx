@@ -26,7 +26,7 @@ const Home = () => {
 						className="w-60 h-60"
 					/>
 					<p className="text-lg text-pink-700 mt-4">
-						Em thỏ bấm vô hộp quà đi ={"))))"} 🎁
+						Em thỏ bấm vô hộp quà đi ={"))))"}
 					</p>
 				</div>
 			) : (
@@ -74,7 +74,7 @@ const Home = () => {
 							</div>
 						</form>
 						<span className="text-center p-6  text-xl text-pink-700">
-							Bấm mấy con thỏ là nó di chuyển á ={"))))"}
+							Chạm mấy con thỏ là nó chạy á ={"))))"}
 						</span>
 
 						<AnimatePresence>
@@ -95,13 +95,13 @@ const Home = () => {
 											🐰
 										</h3>
 										<p className="text-gray-600 mt-2">
-											Cho em chọn lại đó ={")))"} 🐰
+											Cho em chọn lại đó ={")))"}
 										</p>
 										<button
 											onClick={() => setShowModal(false)}
 											className="mt-4 px-4 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600"
 										>
-											Tắt
+											Chọn lại
 										</button>
 									</div>
 								</motion.div>
