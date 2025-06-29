@@ -62,14 +62,14 @@ const Home = () => {
 									}}
 									className="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600"
 								>
-									Yes! ❤️
+									Dạaa! ❤️
 								</button>
 								<button
 									type="button"
 									onClick={() => setShowModal(true)}
 									className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300"
 								>
-									No 😢
+									KHÔNG 😭
 								</button>
 							</div>
 						</form>
@@ -91,7 +91,7 @@ const Home = () => {
 								>
 									<div className="bg-white shadow-xl rounded-xl px-6 py-4 border border-pink-200 text-center w-[90vw] max-w-sm">
 										<h3 className="text-lg font-semibold text-pink-700">
-											😢 Kệ em, em vẫn phải coi với anh!
+											😠 Kệ em, em vẫn phải coi với anh!
 											🐰
 										</h3>
 										<p className="text-gray-600 mt-2">
@@ -101,7 +101,7 @@ const Home = () => {
 											onClick={() => setShowModal(false)}
 											className="mt-4 px-4 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600"
 										>
-											Close
+											Tắt
 										</button>
 									</div>
 								</motion.div>
