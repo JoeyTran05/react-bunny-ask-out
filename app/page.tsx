@@ -8,7 +8,7 @@ const letters = [
 		id: "1",
 		title: "Mời Em Thỏ Xem Phim",
 		url: "moiemtho",
-		date: "hong nhớ nữa",
+		date: "29/6/2025",
 	},
 	{
 		id: "2",
@@ -26,7 +26,7 @@ const letters = [
 		id: "4",
 		title: "3 tháng ✨",
 		url: "three-months",
-		date: "21/9/2025",
+		date: "22/9/2025",
 	},
 ];
 
