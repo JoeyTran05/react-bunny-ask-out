@@ -11,10 +11,11 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
-import { createSupabaseClient } from "@/utils/supabase/client";
-import { Loader2 } from "lucide-react";
-import { Section } from "./taothumoi/editor/page";
+// --- TẠM TẮT SUPABASE (project đang pause) — mở lại khi cần ---
+// import { useEffect, useState } from "react";
+// import { createSupabaseClient } from "@/utils/supabase/client";
+// import { Loader2 } from "lucide-react";
+// import { Section } from "./taothumoi/editor/page";
 
 const letters_old = [
 	{
@@ -41,47 +42,56 @@ const letters_old = [
 		url: "three-months",
 		date: "22/9/2025",
 	},
+	{
+		id: "5",
+		title: "1 năm 💍",
+		url: "one-year",
+		date: "4/9/2026",
+	},
 ];
 
-interface Letter {
-	id: string;
-	title: string;
-	color: string;
-	sections: Section[];
-	created_at: string;
-}
+// --- TẠM TẮT SUPABASE (project đang pause) — mở lại khi cần ---
+// interface Letter {
+// 	id: string;
+// 	title: string;
+// 	color: string;
+// 	sections: Section[];
+// 	created_at: string;
+// }
 
 const LettersMenu = () => {
-	const [letters, setLetters] = useState<Letter[]>([]);
-	const [loading, setLoading] = useState(true);
+	// --- TẠM TẮT SUPABASE (project đang pause) — mở lại khi cần ---
+	// const [letters, setLetters] = useState<Letter[]>([]);
+	// const [loading, setLoading] = useState(true);
+	//
+	// useEffect(() => {
+	// 	const fetchLetters = async () => {
+	// 		try {
+	// 			const supabase = createSupabaseClient();
+	// 			const { data, error } = await supabase
+	// 				.from("letters")
+	// 				.select("*")
+	// 				.order("created_at", { ascending: false });
+	//
+	// 			if (error) throw error;
+	// 			setLetters(data || []);
+	// 		} catch (err) {
+	// 			console.error("Error fetching letters:", err);
+	// 		} finally {
+	// 			setLoading(false);
+	// 		}
+	// 	};
+	// 	fetchLetters();
+	// }, []);
+	//
+	// if (loading) {
+	// 	return (
+	// 		<div className="flex justify-center items-center h-screen text-pink-500">
+	// 			<Loader2 className="animate-spin mr-2" /> Loading letters...
+	// 		</div>
+	// 	);
+	// }
 
-	useEffect(() => {
-		const fetchLetters = async () => {
-			try {
-				const supabase = createSupabaseClient();
-				const { data, error } = await supabase
-					.from("letters")
-					.select("*")
-					.order("created_at", { ascending: false });
-
-				if (error) throw error;
-				setLetters(data || []);
-			} catch (err) {
-				console.error("Error fetching letters:", err);
-			} finally {
-				setLoading(false);
-			}
-		};
-		fetchLetters();
-	}, []);
-
-	if (loading) {
-		return (
-			<div className="flex justify-center items-center h-screen text-pink-500">
-				<Loader2 className="animate-spin mr-2" /> Loading letters...
-			</div>
-		);
-	}
 	return (
 		<main className="min-h-screen bg-pink-50 flex flex-col items-center p-6">
 			<h1 className="text-2xl font-bold text-pink-700 mb-6">
@@ -103,6 +113,7 @@ const LettersMenu = () => {
 						</p>
 					</Link>
 				))}
+				{/* --- TẠM TẮT SUPABASE (project đang pause) — mở lại khi cần ---
 				{letters.map((letter) => (
 					<Link
 						key={letter.id}
@@ -117,6 +128,7 @@ const LettersMenu = () => {
 						</p>
 					</Link>
 				))}
+				*/}
 			</div>
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
 			<div className="fixed bottom-6 right-6 z-50">
